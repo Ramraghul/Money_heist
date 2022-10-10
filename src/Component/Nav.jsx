@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import UserContext from '../Context/UseContext'
 
 function Nav() {
+    const[value,setvalue]=useState("")
     let context =useContext(UserContext)
     return (
         <>
@@ -25,9 +26,9 @@ function Nav() {
                             <a class="nav-link text-danger"><b>Active</b></a>
                         </li>
                     </ul> */}
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2 bg-black bg-outline-disable text-white" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-disable text-white btn-danger" type="submit">Search</button>
+                    <form class="d-flex" role="search" onSubmit={(e)=>{e.preventDefault();context.setmoney(value);}}>
+                        <input value={value} onChange={(e)=>{setvalue(e.target.value)}} class="form-control me-2 bg-black bg-outline-disable text-white" type="search" placeholder="Search" aria-label="Search" />
+                        <button  class="btn btn-outline-disable text-white btn-danger" type="submit">Search</button>
                     </form>
                 </div>
             </nav>
